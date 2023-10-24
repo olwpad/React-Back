@@ -1,14 +1,31 @@
-import { useState } from "react";
+import { useState,useEffect
+ } from "react";
 
 import AddTaskForm from "./components/AddTaskForm";
 import Header from "./components/Header";
 import TaskList from "./components/TaskList";
-
+import axios from "axios"
 import "./styles/App.scss";
 
 function App() {
   const [tasks, setTasks] = useState([]);
 
+
+  useEffect(() => {
+  const getTasks=async()=>{
+
+    try {
+      const result= await axios.get("http://127.0.0.1:3000/tasks");
+      if(result.status===200)
+      setTasks(result.data)
+    } catch (error) {
+      alert(error)
+    }
+
+  }
+  getTasks();
+  }, [])
+  
   const onDeleteHandler = (id) => {
     if (confirm("Are you sure you want to delete the task?")) {
       // Elimina el elemento filtrando el arreglo por el id de cada tarea
