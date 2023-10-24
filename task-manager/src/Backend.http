@@ -1,0 +1,27 @@
+###obtienes todas las tareas
+GET  http://127.0.0.1:3000/tasks
+
+###obtiene una tarea
+GET  http://127.0.0.1:3000/tasks/2
+
+### Crear tarea
+
+POST http://localhost:3000/tasks
+content-type: application/json
+
+{
+
+    "text": "Learn backend"
+
+}
+
+###modficar tarea
+PATCH http://127.0.0.1:3000/tasks/3
+Content-Type: application/json
+
+{
+    "text":"cocinar la comida"
+}
+
+###ELIMINAR TAREA
+DELETE http://127.0.0.1:3000/tasks/e_2OSHI
