@@ -1,32 +1,3 @@
 {
-  "tasks": [
-    {
-      "id": "1",
-      "text": "Run a marathon"
-    },
-    {
-      "id": "2",
-      "text": "Watch Pulp Fiction"
-    },
-    {
-      "id": "3",
-      "text": "cocinar la comida"
-    },
-    {
-      "id": "4",
-      "text": "Learn React"
-    },
-    {
-      "text": "Learn backend",
-      "id": "QwUOQvd"
-    },
-    {
-      "text": "dsdasd",
-      "id": "Ke--cT7"
-    },
-    {
-      "text": "dsadasd",
-      "id": "oqKvT-P"
-    }
-  ]
+  "tasks": []
 }
