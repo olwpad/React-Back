@@ -1,27 +1,32 @@
 import PropTypes from "prop-types";
+import { useContext } from "react";
+
+import LocalizationContext from "../context/LocalizationContext";
 
 import "../styles/Title.scss";
 
-const Title = ({ text, small }) => {
+const Title = ({ count }) => {
+  // Obtiene el contexto
+  const { language } = useContext(LocalizationContext);
+
   return (
     <div className="title">
-      <h2>{text}</h2>
-      <h5>{small}</h5>
+      <h2>{language.title}</h2>
+      <h5>
+        {language.count}: {count}
+      </h5>
     </div>
   );
 };
 
 // Propiedades por defecto
 Title.defaultProps = {
-  text: "Admin Tareas",
-  small: "App",
+  count: 0,
 };
 
 // Define tipos de parámetros
 Title.propTypes = {
-  //text: PropTypes.string.isRequired,
-  text: PropTypes.string,
-  small: PropTypes.string,
+  count: PropTypes.number,
 };
 
 export default Title;

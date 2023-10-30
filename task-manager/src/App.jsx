@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+import local from "./context/LocalizationData";
+import LocalizationContext from "./context/LocalizationContext";
+import SelectLanguage from "./components/SelectLanguage";
 import AddTaskForm from "./components/AddTaskForm";
 import Header from "./components/Header";
 import TaskList from "./components/TaskList";
@@ -9,7 +11,7 @@ import "./styles/App.scss";
 
 function App() {
   const [tasks, setTasks] = useState([]);
-
+  const [language, setLanguage] = useState(local.es);
   // useEffect se ejecuta una sola vez cuando se monta el componente
   useEffect(() => {
     const getTasks = async () => {
@@ -73,11 +75,14 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <Header count={tasks.length} />
-      <AddTaskForm onCreateTask={onCreateHandler} />
-      <TaskList tasks={tasks} onDeleteTask={onDeleteHandler} />
-    </div>
+    <LocalizationContext.Provider value={{ language, setLanguage }}>
+      <div className="app">
+        <Header count={tasks.length} />
+        <SelectLanguage />
+        <AddTaskForm onCreateTask={onCreateHandler} />
+        <TaskList tasks={tasks} onDeleteTask={onDeleteHandler} />
+      </div>
+    </LocalizationContext.Provider>
   );
 }
 
